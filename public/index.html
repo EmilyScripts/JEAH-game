@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Typist</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <nav><ul>
+        <li>Log-in</li>
+        <li>Log-Out</li>
+    </ul></nav>
+    <h1>The Typist</h1>
+
+    <form action="/add_score" method="POST">
+    <input type="text" name="user_input" id="alphabet">
+    <button>Reset</button>
+    <div class="score">High Score</div>
+    <button>Submit</button>
+    </form>
+
+    <div>
+        <h2>High Scores</h2>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="modal" class="hidden">
+        <form action="/add_user">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="">
+        <label for="password">Password</label>
+        <input type="text" name="password" id="">
+        
+        </form>
+    </div>
+</body>
+</html>
