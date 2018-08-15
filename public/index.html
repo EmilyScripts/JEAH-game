@@ -1,18 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="public/style.css" />
-  <script src="public/game.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Typist</title>
+    <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
-  
+    
+    <nav><ul>
+        <li>Log-in</li>
+        <li>Log-Out</li>
+    </ul></nav>
+    <h1>The Typist</h1>
+
+    <form action="/add_score" method="POST">
+    <input type="text" name="user_input" id="alphabet" autocomplete="off" required>
+    <button id="reset">Reset</button>
+    <div class="result">High Score</div>
+    <input type="text" id="scoreHidden" class="hidden">
+    <button>Submit</button>
+    </form>
+
+    <div>
+        <h2>High Scores</h2>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="modal" class="hidden">
+        <form action="/add_user">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="">
+        <label for="password">Password</label>
+        <input type="text" name="password" id="">
+        
+        </form>
+    </div>
+    <script src="public/game.js"></script>
+    <script src="public/api.js"></script>
 </body>
 </html>
-
-<h1> 
-  It WORKS (no thanks to harry)
-</h1>
