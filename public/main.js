@@ -19,7 +19,7 @@ var length = document.getElementById('length')
 
 // Modal Scripts//
 login.addEventListener('click', function (e) {
-  e.preventDefault()
+  // e.preventDefault()
   modal.style.display = 'block'
 })
 
@@ -30,7 +30,7 @@ window.onclick = function (event) {
 }
 
 signUp.addEventListener('click', function (e) {
-  e.preventDefault()
+  // e.preventDefault()
   rModal.style.display = 'block'
 })
 
