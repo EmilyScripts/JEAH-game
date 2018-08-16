@@ -14,7 +14,7 @@ function request (cb) {
       console.log(parsedData)
       cb(parsedData)
     } else if (xhr.readyState === 4 && xhr.status !== 200) {
-      console.log('There was an error getting the data', xhr.responseType)
+      console.log('There was an error getting the data', xhr.responseText)
     }
   }
   xhr.open('GET', /data/, true)

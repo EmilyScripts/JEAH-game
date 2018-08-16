@@ -1,95 +1,101 @@
 // The legion of the DOM //
 
-var modal = document.getElementById('modal')
-var login = document.getElementById('Login')
-var rModal = document.getElementById('registration-modal')
-var signUp = document.getElementById('sign-up')
-var signupForm = document.getElementById('signup-form')
-var signupUser = document.getElementById('signup-user')
+// Modals and triggers
+var loginModal = document.getElementById('modal')
+var signupModal = document.getElementById('registration-modal')
+var navLoginBtn = document.getElementById('nav-login-button')
+var navSignupBtn = document.getElementById('nav-signup-button')
+
+// Signup form fields
+var signupUsernameInput = document.getElementById('signup-user')
 var signupPass = document.getElementById('signup-password')
-var submit = document.getElementById('submit')
-var signupBtn = document.getElementById('signup-btn')
 var confirmPass = document.getElementById('confirm-password')
-// For submit validation //
-var myInput = document.getElementById('psw')
+var signupBtn = document.getElementById('signup-btn')
+var errorDiv = document.getElementById('contentDiv')
+
+// Create good password hints
 var letter = document.getElementById('letter')
 var capital = document.getElementById('capital')
 var number = document.getElementById('number')
 var length = document.getElementById('length')
 
-// Modal Scripts//
-login.addEventListener('click', function (e) {
-  // e.preventDefault()
-  modal.style.display = 'block'
-})
+// Say Hello
+var helloUser = document.getElementById('hello-user')
 
-window.onclick = function (event) {
-  if (event.target === modal) {
-    modal.style.display = 'none'
+if (document.cookie) {
+  var name = document.cookie.split('username=')[1]
+  if (name) {
+    helloUser.textContent = `Welcome back, ${name}!`
+    navLoginBtn.classList.add('hidden')
+    navSignupBtn.classList.add('hidden')
   }
 }
 
-signUp.addEventListener('click', function (e) {
-  // e.preventDefault()
-  rModal.style.display = 'block'
+// Show Login Modal
+navLoginBtn.addEventListener('click', function (e) {
+  loginModal.style.display = 'block'
 })
-
+// Click out of Modal
 window.onclick = function (event) {
-  if (event.target === rModal) {
-    modal.style.display = 'none'
+  if (event.target === loginModal) {
+    loginModal.style.display = 'none'
+  }
+}
+
+// Show Sign-up Modal
+navSignupBtn.addEventListener('click', function (e) {
+  signupModal.style.display = 'block'
+})
+// Click out of Modal
+window.onclick = function (event) {
+  if (event.target === signupModal) {
+    loginModal.style.display = 'none'
   }
 }
 
 // Form Validation //
 
-// Username //
+// Check username 8-20 Chars AND alphanumeric //
 
-signupUser.addEventListener('keyup', function (e) {
-  var regex = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
-  var errorMessage = document.createElement('p')
-  var errorDiv = document.getElementById('error-message')
-  if (regex.test(signupUser.value) === false) {
-    errorMessage.textContent = 'Your username must be between 8-20 Characters'
-    while (errorDiv.firstChild) {
-      errorDiv.removeChild(errorDiv.firstChild)
-    }
-    errorDiv.appendChild(errorMessage)
-    console.log('Not working')
-  } else if (errorDiv.firstChild) {
-    errorDiv.removeChild(errorDiv.firstChild)
+signupUsernameInput.addEventListener('keyup', function (e) {
+  var input = signupUsernameInput.value
+  var regex = new RegExp(/\W/, 'igm')
+  if (input.length < 8 || input.length > 20) {
+    errorDiv.textContent = 'Your username must be between 8-20 Characters'
+    signupBtn.disabled = true
+  } else if (regex.test(input)) {
+    errorDiv.textContent = 'Your username can only have alphanumeric characters'
+    signupBtn.disabled = true
+  } else {
+    errorDiv.textContent = null
+    signupBtn.disabled = false
   }
 })
 
-// Submit //
+// Prevent submit where passwords don't match //
 
-signupBtn.addEventListener('click', function (e) {
-  var submitErr = document.createElement('p')
-  var errorDiv = document.getElementById('error-message')
-  if (errorDiv.firstChild) {
-    submitErr.textContent = 'Username needs filling in'
-    while (submit.firstChild) {
-      submit.removeChild(errorDiv.firstChild)
-    }
-    submit.appendChild(submitErr)
-  } else if (signupPass.value !== confirmPass.value) {
-    submitErr.textContent = 'Passwords do not match'
-    if (submit.firstChild) {
-      submit.removeChild(errorDiv.firstChild)
-    }
-    submit.appendChild(submitErr)
+confirmPass.addEventListener('keyup', function (e) {
+  var firstPW = signupPass.value
+  var secondPW = confirmPass.value
+  if (firstPW !== secondPW) {
+    errorDiv.textContent = 'Your passwords do not match'
+    signupBtn.disabled = true
+  } else {
+    errorDiv.textContent = null
+    signupBtn.disabled = false
   }
 })
 
-// Password //
-
+// Show Password guidance on focus //
 signupPass.addEventListener('focus', function (e) {
   document.getElementById('message').style.display = 'block'
 })
-
 signupPass.addEventListener('blur', function (e) {
   document.getElementById('message').style.display = 'none'
 })
 
+// Turn rules green when they are fulfilled //
+// Validate lowecase letters
 signupPass.addEventListener('keyup', function (e) {
   var lowerCaseLetters = /[a-z]/g
   if (signupPass.value.match(lowerCaseLetters)) {

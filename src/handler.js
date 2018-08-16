@@ -44,10 +44,12 @@ const handler = {
   },
 
   getData: (request, response) => {
+    console.log('getting data')
     getLeaderboard((error, table) => {
       if (error) {
         response.writeHead(500, {'Content-Type': 'text/html'})
-        response.end('Error accessing database')
+        console.log('error accessing data')
+        response.end(`Error accessing database: ${error}`)
       } else {
         response.writeHead(200, {'Content-Type': 'application/json'})
         response.end(JSON.stringify(table))
@@ -62,12 +64,13 @@ const handler = {
     })
     request.on('end', () => {
       const userData = querystring.parse(data)
+      console.log(userData)
       updateUsers(userData, (error, res) => {
         if (error) {
           response.writeHead(500, {'Content-Type': 'text/html'})
-          response.end('Error with updating users')
+          response.end(`Error with updating users: ${error}`)
         } else {
-          response.writeHead(302, {'Location': '/', 'Set-cookie': `username=${userData.username} ; HttpOnly`})
+          response.writeHead(302, {'Location': '/', 'Set-cookie': `username=${userData.username}`})
           response.end()
         }
       })
