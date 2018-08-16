@@ -16,18 +16,18 @@
       <form action="/add_user" method="POST" id="signup-form">
         <!-- Username -->
         <label for="username">Username</label>
-        <input type="text" name="username" class="form-input" id="signup-user" required>
+        <input type="text" name="username" class="form-input" id="signup-user" required autocomplete="off">
         <div id="error-message"></div>
         <!-- Password -->
         <label for="password">Password</label>
-        <input type="password" name="password" class="form-input" id="signup-password" required>
+        <input type="password" name="password" class="form-input" id="signup-password" required autocomplete="off">
         <!-- Confirm Password -->
         <label for="confirm-password">Confirm password</label>
-        <input type="password" name="passwordConfimed" class="form-input" id="confirm-password" required>
+        <input type="password" name="passwordConfimed" class="form-input" id="confirm-password" required autocomplete="off">
         <!-- Button -->
         <button type="submit" id="signup-btn">Sign Up</button>
         <!-- Passwords do not match div -->
-        <div id="submit"></div>
+        <div id="contentDiv"></div>
         <!-- Form validation div -->
         <div id="message">
           <h3>Password must contain the following:</h3>
@@ -60,9 +60,10 @@
   </div>
 
   <nav>
-    <button id="sign-up">Sign Up</button>
-    <button id="Login">Login</button>
+    <button id="nav-signup-button">Sign Up</button>
+    <button id="nav-login-button">Login</button>
   </nav>
+  <h3 id="hello-user"></h3>
   <h1>The Typist</h1>
 
   <form action="/add_score" method="POST">
