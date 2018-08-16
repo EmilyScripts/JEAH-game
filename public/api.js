@@ -11,6 +11,7 @@ function request (cb) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var parsedData = JSON.parse(xhr.responseText)
+      console.log(parsedData)
       cb(parsedData)
     } else if (xhr.readyState === 4 && xhr.status !== 200) {
       console.log('There was an error getting the data', xhr.responseType)
@@ -27,7 +28,7 @@ function renderData (arr) {
     var row = document.createElement('tr')
     appendTableData(row, count)
     appendTableData(row, el.name)
-    appendTableData(row, el.score)
+    appendTableData(row, el.scores)
     count++
     table.appendChild(row)
   })
