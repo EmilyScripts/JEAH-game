@@ -1,13 +1,20 @@
+// The legion of the DOM //
+
 var modal = document.getElementById('modal')
 var login = document.getElementById('Login')
 var rModal = document.getElementById('registration-modal')
 var signUp = document.getElementById('sign-up')
 var signupForm = document.getElementById('signup-form')
 var signupUser = document.getElementById('signup-user')
-var signUpPass = document.getElementById('signup-password')
+var signupPass = document.getElementById('signup-password')
 var submit = document.getElementById('submit')
-
 var signupBtn = document.getElementById('signup-btn')
+var myInput = document.getElementById('psw')
+var letter = document.getElementById('letter')
+var capital = document.getElementById('capital')
+var number = document.getElementById('number')
+var length = document.getElementById('length')
+
 // Modal Scripts//
 login.addEventListener('click', function (e) {
   e.preventDefault()
@@ -33,6 +40,8 @@ window.onclick = function (event) {
 
 // Form Validation //
 
+// Username //
+
 signupUser.addEventListener('keyup', function (e) {
   var regex = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
   var errorMessage = document.createElement('p')
@@ -49,6 +58,8 @@ signupUser.addEventListener('keyup', function (e) {
   }
 })
 
+// Submit //
+
 signupBtn.addEventListener('click', function (e) {
   var submitErr = document.createElement('p')
   var errorDiv = document.getElementById('error-message')
@@ -58,5 +69,55 @@ signupBtn.addEventListener('click', function (e) {
       submit.removeChild(errorDiv.firstChild)
     }
     submit.appendChild(submitErr)
+  }
+})
+
+// Password //
+
+signupPass.addEventListener('focus', function (e) {
+  document.getElementById('message').style.display = 'block'
+})
+
+signupPass.addEventListener('blur', function (e) {
+  document.getElementById('message').style.display = 'none'
+})
+
+signupPass.addEventListener('keyup', function (e) {
+  var lowerCaseLetters = /[a-z]/g
+  if (signupPass.value.match(lowerCaseLetters)) {
+    letter.classList.remove('invalid')
+    letter.classList.add('valid')
+  } else {
+    letter.classList.remove('valid')
+    letter.classList.add('invalid')
+  }
+
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g
+  if (signupPass.value.match(upperCaseLetters)) {
+    capital.classList.remove('invalid')
+    capital.classList.add('valid')
+  } else {
+    capital.classList.remove('valid')
+    capital.classList.add('invalid')
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g
+  if (signupPass.value.match(numbers)) {
+    number.classList.remove('invalid')
+    number.classList.add('valid')
+  } else {
+    number.classList.remove('valid')
+    number.classList.add('invalid')
+  }
+
+  // Validate length
+  if (signupPass.value.length >= 8) {
+    length.classList.remove('invalid')
+    length.classList.add('valid')
+  } else {
+    length.classList.remove('valid')
+    length.classList.add('invalid')
   }
 })

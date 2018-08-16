@@ -32,6 +32,7 @@ input[type=text] {
   width: 80%;
   margin: 15% auto;
   padding: 10px;
+ 
 }
 
 #registration-modal {
@@ -47,5 +48,22 @@ input[type=text] {
   border: 1px solid #fff;
   width: 80%;
   margin: 15% auto;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 10px
+}
+
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
 }

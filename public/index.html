@@ -15,11 +15,19 @@
           <input type="text" name="username" class="form-input"id="signup-user">
             <div id="error-message"></div>
           <label for="password">Password</label>
-          <input type="text" name="password" class="form-input" id="signup-password">
+          <input type="password" name="password" class="form-input" id="signup-password" required>
+        
           <label for="confirm-password">Confirm password</label>
-          <input type="text" name="password" class="form-input">
+          <input type="password" name="password" class="form-input" required>
           <button  type="submit" form="signUp-form" id="signup-btn">Sign Up</button>
         <div id="submit"></div>
+        <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
       </form>
     </div>
   </div>
