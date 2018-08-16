@@ -1,4 +1,7 @@
-# JEAH-game
-game
+# The Typist
 
-                https://hackmd.io/R0GENDN6RvCtuCAQ2LxHqg
+### A game by Emily, Armand, Harry and Jessie.
+
+We did the thing. Readme to follow soon.
+
+https://the-typist-game.herokuapp.com/
