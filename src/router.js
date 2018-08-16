@@ -6,14 +6,7 @@ const router = (request, response) => {
     handler.homeRoute(request, response)
   } else if (url.indexOf('/public/') !== -1) {
     handler.handlePublic(request, response)
-  }
-  // else if (url.indexOf('/add_user')) {
-  //   handler.handleAddUser(request, response)
-  // }
-  // else if (url.indexOf('/login')) {
-  //   handler.handleLogin(request, response)
-  // }
-  else {
+  } else {
     response.writeHead(404, { 'Content-Type': 'text/html' })
     response.end('This is not the url you are looking 404')
   }

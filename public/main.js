@@ -9,6 +9,8 @@ var signupUser = document.getElementById('signup-user')
 var signupPass = document.getElementById('signup-password')
 var submit = document.getElementById('submit')
 var signupBtn = document.getElementById('signup-btn')
+var confirmPass = document.getElementById('confirm-password')
+// For submit validation //
 var myInput = document.getElementById('psw')
 var letter = document.getElementById('letter')
 var capital = document.getElementById('capital')
@@ -64,8 +66,14 @@ signupBtn.addEventListener('click', function (e) {
   var submitErr = document.createElement('p')
   var errorDiv = document.getElementById('error-message')
   if (errorDiv.firstChild) {
-    submitErr.textContent = 'fill in the form'
+    submitErr.textContent = 'Username needs filling in'
     while (submit.firstChild) {
+      submit.removeChild(errorDiv.firstChild)
+    }
+    submit.appendChild(submitErr)
+  } else if (signupPass.value !== confirmPass.value) {
+    submitErr.textContent = 'Passwords do not match'
+    if (submit.firstChild) {
       submit.removeChild(errorDiv.firstChild)
     }
     submit.appendChild(submitErr)
