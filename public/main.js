@@ -5,6 +5,9 @@ var signUp = document.getElementById('sign-up')
 var signupForm = document.getElementById('signup-form')
 var signupUser = document.getElementById('signup-user')
 var signUpPass = document.getElementById('signup-password')
+var submit = document.getElementById('submit')
+
+var signupBtn = document.getElementById('signup-btn')
 // Modal Scripts//
 login.addEventListener('click', function (e) {
   e.preventDefault()
@@ -29,9 +32,6 @@ window.onclick = function (event) {
 }
 
 // Form Validation //
-var clearNode = function () {
-
-}
 
 signupUser.addEventListener('keyup', function (e) {
   var regex = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
@@ -46,5 +46,17 @@ signupUser.addEventListener('keyup', function (e) {
     console.log('Not working')
   } else if (errorDiv.firstChild) {
     errorDiv.removeChild(errorDiv.firstChild)
+  }
+})
+
+signupBtn.addEventListener('click', function (e) {
+  var submitErr = document.createElement('p')
+  var errorDiv = document.getElementById('error-message')
+  if (errorDiv.firstChild) {
+    submitErr.textContent = 'fill in the form'
+    while (submit.firstChild) {
+      submit.removeChild(errorDiv.firstChild)
+    }
+    submit.appendChild(submitErr)
   }
 })
