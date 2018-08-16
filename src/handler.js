@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const getLeaderboard = require('./getData');
+const updateUsers = require('./postData');
+const querystring = require('querystring');
 
 const handler = {
 homeRoute: (request, response) => {
@@ -49,6 +51,18 @@ homeRoute: (request, response) => {
         response.writeHead(200, {'Content-Type': 'application/json'});
         response.end(JSON.stringify(table));
       }
+    });
+  },
+
+  postUser: (request, response) => {
+    let data = '';
+    request.on('data',(chunk) => {
+      data += chunk; 
+    });
+    request.on('end', () => {
+      const userData = querystring.parse(data);
+      updateUsers(userData, cb)
+      response.end('form sent');
     });
   }
 }
