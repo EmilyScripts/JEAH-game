@@ -8,13 +8,27 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
+  <div id="registration-modal" class="more-hidden">
+      <div id="registration-modal-box">
+        <form action="/add_user" method="POST" id="signUp-form">
+          <label for="username">Username</label>
+          <input type="text" name="username" class="form-input">
+          <label for="password">Password</label>
+          <input type="text" name="password" class="form-input">
+          <label for="confirm-password">Confirm password</label>
+          <input type="text" name="password" class="form-input">
+          <button  type="submit" form="signUp-form">Sign Up</button>
+      </form>
+    </div>
+  </div>
   <div id="modal" class="hidden">
       <div id="modal-box">
-        <form action="/add_user" method="POST" id="login-form">
+        <form action="/login" method="POST" id="login-form">
           <label for="username">Username</label>
           <input type="text" name="username" id="">
           <label for="password">Password</label>
           <input type="text" name="password" id="">
+
           <button  type="submit" form="login-form">Login</button>
       </form>
     </div>

@@ -5,6 +5,9 @@ body {
 .hidden {
     display: none;
 }
+.more-hidden {
+    display: none;
+}
 
 input[type=text] {
     width: 100%;
@@ -24,6 +27,22 @@ input[type=text] {
 }
 
 #modal-box {
+  background-color: #fefefe;
+  border: 1px solid #fff;
+  width: 80%;
+  margin: 15% auto;
+  padding: 10px;
+}
+
+#registration-modal {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#registration-modal-box {
   background-color: #fefefe;
   border: 1px solid #fff;
   width: 80%;
