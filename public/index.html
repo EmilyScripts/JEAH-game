@@ -10,14 +10,16 @@
 <body>
   <div id="registration-modal" class="more-hidden">
       <div id="registration-modal-box">
-        <form action="/add_user" method="POST" id="signUp-form">
+        <form action="/add_user" method="POST" id="signup-form">
           <label for="username">Username</label>
-          <input type="text" name="username" class="form-input">
+          <input type="text" name="username" class="form-input"id="signup-user">
+            <div id="error-message"></div>
           <label for="password">Password</label>
-          <input type="text" name="password" class="form-input">
+          <input type="text" name="password" class="form-input" id="signup-password">
           <label for="confirm-password">Confirm password</label>
           <input type="text" name="password" class="form-input">
           <button  type="submit" form="signUp-form">Sign Up</button>
+          
       </form>
     </div>
   </div>
