@@ -7,6 +7,7 @@ const router = (request, response) => {
   } else if (url.indexOf('/public/') !== -1) {
     handler.handlePublic(request, response)
   } else if (url.indexOf('/data/') !== -1) {
+    console.log('routing to data')
     handler.getData(request, response)
   } else if (url.indexOf('/add_user') !== -1) {
     console.log('directing to add user...')
