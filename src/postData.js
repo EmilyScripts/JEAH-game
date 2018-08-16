@@ -21,4 +21,25 @@ const updateUsers = (userData, cb) => {
   });
 };
 
-module.exports = updateUsers;
+const updateScores = (scoreData, username, cb) => {
+  const score = parseFloat(scoreData.score);
+  // lookup user id for username
+  dbconnection.query(`SELECT id FROM users WHERE name='${username}';`,(err, id) => {
+    if (err) cb(new Error('could not find user id from cookie'));
+    else {
+      const user_id = id.rows[0].id;
+      console.log('user id: ',user_id);
+      console.log('score: ',score)
+      const sql = `INSERT INTO scores(user_id, scores) VALUES ('${user_id}','${score}');`;
+      dbconnection.query(sql, (err, res) => {
+        if (err) {
+          cb(new Error('failed to insert score into DB'));
+        } else {
+          cb(null, res);
+        }
+      });
+    }
+  })
+};
+
+module.exports = { updateUsers, updateScores };

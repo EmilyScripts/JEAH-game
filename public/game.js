@@ -17,6 +17,7 @@ input.addEventListener('keyup', function(e) {
         score = (endTime - startTime)/1000;
         result.textContent = "Your score is: " + score + " seconds";
         scoreInput.value = score;
+
     }
     var matcher = new RegExp(input.value)
     if (matcher.test(alphabet) === true) {

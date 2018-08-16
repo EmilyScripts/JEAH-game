@@ -12,6 +12,9 @@ const url = request.url;
   } else if (url.indexOf('/add_user') !== -1) {
     console.log('directing to add user...')
     handler.postUser(request, response);
+  } else if (url.indexOf('/add_score') !== -1) {
+    console.log('routing to add score...')
+    handler.postScore(request, response);
   } else {
     console.log('url not recognised: ', url)
     response.writeHead(404,{ 'Content-Type' : 'text/html' });
