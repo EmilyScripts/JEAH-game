@@ -59,12 +59,6 @@
       </form>
     </div>
   </div>
-    <nav id="nav">
-        <button id="nav-signup-button">Sign Up</button>
-        <button id="nav-login-button">Login</button>
-    </nav>
-    <h3 id="hello-user"></h3>
-    <h1>The Typist</h1>
 
   <nav>
     <button id="nav-signup-button">Sign Up</button>
@@ -73,7 +67,7 @@
   <h3 id="hello-user"></h3>
   <h1>The Typist</h1>
   <div id="random-string"></div>
-  < action="/add_score" method="POST">
+  <form action="/add_score" method="POST">
     <input type="text" name="user_input" id="alphabet" autocomplete="off" required>
     <button id="reset">Reset</button>
     <div id="score-submit">
@@ -98,5 +92,4 @@
   <script src="public/api.js"></script>
   <script src="public/main.js"></script>
 </body>
-
 </html>
