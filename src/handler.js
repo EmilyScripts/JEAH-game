@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const getLeaderboard = require('./getData');
 
 const handler = {
 homeRoute: (request, response) => {
@@ -35,6 +36,18 @@ homeRoute: (request, response) => {
       } else {
         response.writeHead(200, {'Content-Type': `${extensionType[extension]}`});
         response.end(file);
+      }
+    });
+  },
+
+  getData: (request, response) => {
+    getLeaderboard( (error, table) => {
+      if (error) {
+        response.writeHead(500, {'Content-Type': 'text/html'});
+        response.end('Error accessing database');
+      } else {
+        response.writeHead(200, {'Content-Type': 'application/json'});
+        response.end(JSON.stringify(table));
       }
     });
   }
