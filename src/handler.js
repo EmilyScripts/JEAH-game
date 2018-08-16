@@ -61,8 +61,16 @@ homeRoute: (request, response) => {
     });
     request.on('end', () => {
       const userData = querystring.parse(data);
-      updateUsers(userData, cb)
-      response.end('form sent');
+      updateUsers(userData, (error, res) => {
+        if (error) {
+          response.writeHead(500, {'Content-Type': 'text/html'});
+          response.end('Error with updating users');
+        } else {
+          response.writeHead(302, {'Location': '/'});
+          response.end();
+        }
+      });
+      // encrypt password before putting in DB
     });
   }
 }

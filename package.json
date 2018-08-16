@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/fac-14/JEAH-game#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "env2": "^2.2.2",
     "pg": "^7.4.3"
   },
