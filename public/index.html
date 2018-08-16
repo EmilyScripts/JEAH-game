@@ -1,75 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Typist</title>
-    <link rel="stylesheet" href="public/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The Typist</title>
+  <link rel="stylesheet" href="public/style.css">
 </head>
+
 <body>
   <div id="registration-modal" class="more-hidden">
-      <div id="registration-modal-box">
-        <form action="/add_user" method="POST" id="signup-form">
-          <label for="username">Username</label>
-          <input type="text" name="username" class="form-input"id="signup-user" required>
-            <div id="error-message"></div>
-          <label for="password">Password</label>
-          <input type="password" name="password" class="form-input" id="signup-password" required   >
-        
-          <label for="confirm-password">Confirm password</label>
-          <input type="password" name="password" class="form-input" id="confirm-password" required>
-          <button  type="submit" form="signUp-form" id="signup-btn">Sign Up</button>
+    <div id="registration-modal-box">
+      <!-- Form start -->
+      <form action="/add_user" method="POST" id="signup-form">
+        <!-- Username -->
+        <label for="username">Username</label>
+        <input type="text" name="username" class="form-input" id="signup-user" required>
+        <div id="error-message"></div>
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-input" id="signup-password" required>
+        <!-- Confirm Password -->
+        <label for="confirm-password">Confirm password</label>
+        <input type="password" name="passwordConfimed" class="form-input" id="confirm-password" required>
+        <!-- Button -->
+        <button type="submit" id="signup-btn">Sign Up</button>
+        <!-- Passwords do not match div -->
         <div id="submit"></div>
+        <!-- Form validation div -->
         <div id="message">
-            <h3>Password must contain the following:</h3>
-            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-            <p id="number" class="invalid">A <b>number</b></p>
-            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-          </div>
+          <h3>Password must contain the following:</h3>
+          <p id="letter" class="invalid">A
+            <b>lowercase</b> letter</p>
+          <p id="capital" class="invalid">A
+            <b>capital (uppercase)</b> letter</p>
+          <p id="number" class="invalid">A
+            <b>number</b>
+          </p>
+          <p id="length" class="invalid">Minimum
+            <b>8 characters</b>
+          </p>
+        </div>
       </form>
+      <!-- Form End -->
     </div>
   </div>
+
   <div id="modal" class="hidden">
-      <div id="modal-box">
-        <form action="/add_user" method="POST" id="login-form">
-          <label for="username">Username</label>
-          <input type="text" name="username" id="">
-          <label for="password">Password</label>
-          <input type="text" name="password" id="">
-
-          <button  type="submit" form="login-form">Login</button>
+    <div id="modal-box">
+      <form action="/login" method="POST" id="login-form">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="login-un">
+        <label for="password">Password</label>
+        <input type="text" name="password" id="login-pw">
+        <button type="submit" form="login-form">Login</button>
       </form>
     </div>
   </div>
-    <nav>
-      <button id="sign-up">Sign Up</button>
-      <button id="Login">Login</button>
-    </nav>
-    <h1>The Typist</h1>
 
-    <form action="/add_score" method="POST">
-        <input type="text" name="user_input" id="alphabet" autocomplete="off" required>
-        <button id="reset">Reset</button>
-        <div class="result">High Score</div>
-        <input type="text" name="score" id="scoreHidden" class="hidden">
-        <button>Submit</button>
-    </form>
+  <nav>
+    <button id="sign-up">Sign Up</button>
+    <button id="Login">Login</button>
+  </nav>
+  <h1>The Typist</h1>
 
-    <div>
-        <h2>High Scores</h2>
-        <table>
-            <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-        </table>
-    </div>
+  <form action="/add_score" method="POST">
+    <input type="text" name="user_input" id="alphabet" autocomplete="off" required>
+    <button id="reset">Reset</button>
+    <div class="result">High Score</div>
+    <input type="text" name="score" id="scoreHidden" class="hidden">
+    <button>Submit</button>
+  </form>
 
-    <script src="public/game.js"></script>
-    <script src="public/api.js"></script>
-    <script src="public/main.js"></script>
+  <div>
+    <h2>High Scores</h2>
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+    </table>
+  </div>
+
+  <script src="public/game.js"></script>
+  <script src="public/api.js"></script>
+  <script src="public/main.js"></script>
 </body>
+
 </html>
