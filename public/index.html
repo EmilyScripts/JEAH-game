@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Typist</title>
     <link rel="stylesheet" href="public/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:400,700" rel="stylesheet">
 </head>
 <body>
   <div id="registration-modal" class="more-hidden">
@@ -43,7 +44,7 @@
       </form>
     </div>
   </div>
-    <nav>
+    <nav id="nav">
       <button id="sign-up">Sign Up</button>
       <button id="Login">Login</button>
     </nav>
@@ -52,12 +53,14 @@
     <form action="/add_score" method="POST">
         <input type="text" name="user_input" id="alphabet" autocomplete="off" required>
         <button id="reset">Reset</button>
-        <div class="result">High Score</div>
-        <input type="text" name="score" id="scoreHidden" class="hidden">
-        <button>Submit</button>
+        <div id="score-submit">
+            <div class="result">Score:</div>
+            <input type="text" name="score" id="scoreHidden" class="hidden">
+            <button id="submit-button">Submit</button>
+        </div>
     </form>
 
-    <div>
+    <div class="scores">
         <h2>High Scores</h2>
         <table>
             <tr>

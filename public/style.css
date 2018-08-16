@@ -1,4 +1,26 @@
+* {
+  font-family: 'Catamaran', sans-serif;
+  margin: auto;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #2B2D42;
+}
+
 body {
+  width: 70vw;
+  background-color: rgb(171, 176, 185);
+}
+
+#nav {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+button {
   margin: 0;
 }
 
@@ -9,10 +31,57 @@ body {
     display: none;
 }
 
+#alphabet {
+  text-align: left;
+  max-width: 40vw;
+}
+
+#reset {
+  border: 1px solid brown;
+  text-align: center;
+  display: block;
+  margin: auto;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+#score-submit {
+  width: 40%;
+  border: 1px solid purple;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.result {
+  position: relative;
+  right: 4vw;
+}
+
+signup-form {
+  display: block;
+}
+
 input[type=text] {
     width: 100%;
 }
 
+/* .scores {
+  min-width: 300px;
+} */
+table {
+  /* position: relative; */
+  width: 80%;
+}
+
+th {
+  /* text-align: left; */
+  /* width: 33.3%; */
+}
+
+td {
+  /* text-align: left; */
+}
 
 .mistake {
     color: firebrick;
