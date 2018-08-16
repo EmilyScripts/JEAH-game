@@ -8,11 +8,21 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
-    
-    <nav><ul>
-        <li>Log-in</li>
-        <li>Log-Out</li>
-    </ul></nav>
+  <div id="modal" class="hidden">
+      <div id="modal-box">
+        <form action="/add_user" method="POST" id="login-form">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="">
+          <label for="password">Password</label>
+          <input type="text" name="password" id="">
+          <button  type="submit" form="login-form">Login</button>
+      </form>
+    </div>
+  </div>
+    <nav>
+      <button id="sign-up">Sign Up</button>
+      <button id="Login">Login</button>
+    </nav>
     <h1>The Typist</h1>
 
     <form action="/add_score" method="POST">
@@ -34,16 +44,9 @@
         </table>
     </div>
 
-    <div id="modal" class="hidden">
-        <form action="/add_user">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="">
-        <label for="password">Password</label>
-        <input type="text" name="password" id="">
-        
-        </form>
-    </div>
+
     <script src="public/game.js"></script>
     <script src="public/api.js"></script>
+    <script src="public/main.js"></script>
 </body>
 </html>
