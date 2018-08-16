@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 INSERT INTO users(name, password) VALUES
-('Chuck', 'norris'), 
+('Chuck', 'norris'),
 ('Jack123', 'andJill'),
 ('Jack234', 'bauer');
 
@@ -26,3 +26,5 @@ INSERT INTO scores(user_id, scores) VALUES
 
 
 COMMIT;
+
+--leaderboard=# SELECT name, scores FROM users INNER JOIN scores ON users.id = scores.user_id ORDER BY scores;
