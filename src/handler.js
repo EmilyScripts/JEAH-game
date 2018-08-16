@@ -70,7 +70,7 @@ const handler = {
           response.writeHead(500, {'Content-Type': 'text/html'})
           response.end(`Error with updating users: ${error}`)
         } else {
-          response.writeHead(302, {'Location': '/', 'Set-cookie': `username=${userData.username} ; HttpOnly`})
+          response.writeHead(302, {'Location': '/', 'Set-cookie': `username=${userData.username}`})
           response.end()
         }
       })

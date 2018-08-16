@@ -1,5 +1,3 @@
-console.log(document.cookie)
-
 // The legion of the DOM //
 
 // Modals and triggers
@@ -20,6 +18,18 @@ var letter = document.getElementById('letter')
 var capital = document.getElementById('capital')
 var number = document.getElementById('number')
 var length = document.getElementById('length')
+
+// Say Hello
+var helloUser = document.getElementById('hello-user')
+
+if (document.cookie) {
+  var name = document.cookie.split('username=')[1]
+  if (name) {
+    helloUser.textContent = `Welcome back, ${name}!`
+    navLoginBtn.classList.add('hidden')
+    navSignupBtn.classList.add('hidden')
+  }
+}
 
 // Show Login Modal
 navLoginBtn.addEventListener('click', function (e) {
