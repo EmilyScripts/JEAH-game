@@ -87,7 +87,7 @@ confirmPass.addEventListener('keyup', function (e) {
   if (firstPW !== secondPW) {
     errorDiv.textContent = 'Your passwords do not match'
     signupBtn.disabled = true
-  } else if (!testPasswordValid(signupPass)) {
+  } else if (!testPasswordValid(firstPW)) {
     errorDiv.textContent = 'Your password is not strong enough'
     signupBtn.disabled = true
   } else {
@@ -120,7 +120,10 @@ function testInputValid (regex, warningText) {
 }
 
 function testPasswordValid (pw) {
-  if (/[a-z]/.test(pw) && /[A-Z]/.test(pw) && /[0-9]/.test(pw) && /^.{8,}/.test(pw)) {
+  if (/[a-z]/.test(pw) &&
+      /[A-Z]/.test(pw) &&
+      /[0-9]/.test(pw) &&
+      /^.{8,}/.test(pw)) {
     return true
   } else {
     return false
