@@ -1,120 +1,158 @@
+/* General Styles */
 * {
   font-family: 'Catamaran', sans-serif;
   margin: auto;
-  text-align: center;
 }
 
 h1, h2 {
   color: #2B2D42;
+  text-align: center;
 }
 
 body {
-  width: 70vw;
-  background-color: rgb(171, 176, 185);
-}
-
-#nav {
-  border: 1px solid green;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  background-color: #EDF2F4;
 }
 
 button {
   margin: 0;
+  padding: 5px;
+  color: #EDF2F4;
+  border-radius: 3px;
+  min-width: 80px;
+  font-size: 0.8rem;
+  background: #2B2D42;
 }
 
-.hidden {
-    display: none;
+form {
+  text-align: center;
 }
+
+#nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+header {
+  text-align: center;
+  color: #2B2D42;
+  
+}
+
+.hidden,
 .more-hidden {
     display: none;
 }
 
+/* Game Styles */
+
+/* Input */
+
 #alphabet {
   text-align: left;
-  max-width: 40vw;
-}
-
-#reset {
-  border: 1px solid brown;
-  text-align: center;
-  display: block;
-  margin: auto;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-#score-submit {
-  width: 40%;
-  border: 1px solid purple;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.result {
-  position: relative;
-  right: 4vw;
-}
-
-signup-form {
-  display: block;
-}
-
-input[type=text] {
-    width: 100%;
-}
-
-/* .scores {
-  min-width: 300px;
-} */
-table {
-  /* position: relative; */
-  width: 80%;
-}
-
-th {
-  /* text-align: left; */
-  /* width: 33.3%; */
-}
-
-td {
-  /* text-align: left; */
+  max-width: 400px;
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+  padding: 2px;
 }
 
 .mistake {
-    color: firebrick;
+  color: red;
+  font-style: bold;
 }
 
-#modal {
-  z-index: 1;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+#instructions {
+  font-style: italic;
 }
 
-#modal-box {
-  background-color: #fefefe;
-  border: 1px solid #fff;
+#random-string {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+#reset {
+  display: block;
+  margin: 16px auto 16px;
+  background: #8D99AE;
+}
+
+#submit-score-btn {
+  margin: 16px auto 16px;
+}
+
+/* Scores section */
+
+
+table {
   width: 80%;
-  margin: 15% auto;
-  padding: 10px;
- 
+  padding-bottom: 20px;
+  border-collapse: collapse;
 }
 
-#registration-modal {
+th {
+  border-bottom: 4px solid #D90429;
+}
+
+td {
+  text-align: center;
+}
+
+.scores {
+  background: white;
+  margin-top: 40px;
+  padding: 30px;
+  border: 5px solid #8D99AE;
+  border-radius: 10px;
+}
+
+.scores h2 {
+  padding: 20px;
+  color: #D90429;
+}
+
+/*------------------ MODALS -------------------*/
+
+/* Modal Content */
+
+#signup-form,
+#login-form {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: left;
+  padding: 20px 0;
+}
+
+.form-input {
+  width: 80%;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 3px;
+  background: #EDF2F4;
+}
+
+#signup-btn,
+#modal-login-button {
+  width: 80px;
+  text-align: center;
+  display: block;
+  margin: 20px auto 0;
+  background: #D90429;
+  color: #EDF2F4;
+}
+
+#registration-modal, #modal {
   z-index: 1;
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  width: 70vw;
+  margin: 0 auto;
 }
 
-#registration-modal-box {
+#registration-modal-box, #modal-box {
   background-color: #fefefe;
-  border: 1px solid #fff;
+  border: 5px solid #2B2D42;
+  box-shadow: 0 0 100px 30px rgba(0,0,0,0.2);
   width: 80%;
   margin: 15% auto;
   padding: 20px;
@@ -125,8 +163,7 @@ td {
   display:none;
   background: #f1f1f1;
   color: #000;
-  position: relative;
-  
+  position: relative; 
 }
 
 .valid {
@@ -135,4 +172,11 @@ td {
 
 .invalid {
   color: red;
+}
+
+@media (min-width: 800px) {
+  main {
+    width: 70vw;
+    margin: 0 auto;
+  }
 }

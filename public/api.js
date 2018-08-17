@@ -1,11 +1,5 @@
 var table = document.querySelector('table')
 
-var dummy = [
-  {name: 'Armand', score: 11.5},
-  {name: 'Jessie', score: 3.2},
-  {name: 'Harry', score: 7}
-]
-
 function request (cb) {
   var xhr = new XMLHttpRequest()
   xhr.onreadystatechange = function () {
