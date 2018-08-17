@@ -35,23 +35,22 @@ if (document.cookie) {
 navLoginBtn.addEventListener('click', function (e) {
   loginModal.style.display = 'block'
 })
-// Click out of Modal
-window.onclick = function (event) {
-  if (event.target === loginModal) {
-    loginModal.style.display = 'none'
-  }
-}
 
 // Show Sign-up Modal
 navSignupBtn.addEventListener('click', function (e) {
   signupModal.style.display = 'block'
 })
-// Click out of Modal
-window.onclick = function (event) {
-  if (event.target === signupModal) {
+
+// Click out of Login Modal or Sign-up modal
+window.addEventListener('click', function (event) {
+  console.log('Working')
+  if (event.target == loginModal) {
     loginModal.style.display = 'none'
+    console.log('Working')
+  } else if (event.target == signupModal) {
+    signupModal.style.display = 'none'
   }
-}
+})
 
 // Form Validation //
 
