@@ -53,4 +53,7 @@ This should set up the database! To run locally, disconnect from the database, e
 npm run dev
 ```
 
-
+Still not working? Getting a permissions error? You may need to grant your user further privileges on the database. 
+```
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA leaderboard TO yourName;
+```
