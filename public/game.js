@@ -2,7 +2,8 @@ var input = document.querySelector('#alphabet')
 var scoreInput = document.querySelector('#scoreHidden')
 var reset = document.querySelector('#reset')
 var result = document.querySelector('.result')
-var form = document.querySelector('form')
+// var form = document.querySelector('form')
+var submit_score_btn = document.querySelector('#submit-score-btn')
 
 // var alphabet = 'abcdefghijklmnopqrstuvwxyz'
 var startTime = 0
@@ -25,8 +26,11 @@ input.addEventListener('keyup', function (e) {
   } else if (endTime == 0 && input.value == rand) {
     endTime = new Date()
     score = (endTime - startTime) / 1000
-    result.textContent = 'Your score is: ' + score + ' seconds'
+    var scoreElement = document.createElement('p')
+    scoreElement.textContent = 'Your score is: ' + score + ' seconds'
+    result.appendChild(scoreElement)
     scoreInput.value = score
+    submit_score_btn.classList.remove('hidden')
   }
   var matcher = new RegExp(input.value)
   if (matcher.test(rand) === true) {
@@ -44,6 +48,7 @@ reset.addEventListener('click', function (e) {
   input.value = null
   input.focus()
   result.textContent = null
+  submit_score_btn.classList.add('hidden')
 })
 
 input.addEventListener('paste', function (e) {

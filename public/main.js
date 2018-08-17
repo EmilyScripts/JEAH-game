@@ -5,6 +5,7 @@ var loginModal = document.getElementById('modal')
 var signupModal = document.getElementById('registration-modal')
 var navLoginBtn = document.getElementById('nav-login-button')
 var navSignupBtn = document.getElementById('nav-signup-button')
+var body = document.querySelector('body')
 
 // Signup form fields
 var signupUsernameInput = document.getElementById('signup-user')
@@ -12,6 +13,9 @@ var signupPass = document.getElementById('signup-password')
 var confirmPass = document.getElementById('confirm-password')
 var signupBtn = document.getElementById('signup-btn')
 var errorDiv = document.getElementById('contentDiv')
+
+var submit_score_btn = document.querySelector('#submit-score-btn')
+var result = document.querySelector('.result')
 
 // Create good password hints
 var letter = document.getElementById('letter')
@@ -29,27 +33,31 @@ if (document.cookie) {
     navLoginBtn.classList.add('hidden')
     navSignupBtn.classList.add('hidden')
   }
+} else {
+  submit_score_btn.disabled = true
+  var warning = document.createElement('p')
+  warning.classList.add('mistake')
+  warning.textContent = 'You will need to Sign up or Log in to submit any scores'
+  result.appendChild(warning)
 }
 
 // Show Login Modal
 navLoginBtn.addEventListener('click', function (e) {
   loginModal.style.display = 'block'
+  signupModal.style.display = 'none'
 })
-// Click out of Modal
-window.onclick = function (event) {
-  if (event.target === loginModal) {
-    loginModal.style.display = 'none'
-  }
-}
-
 // Show Sign-up Modal
 navSignupBtn.addEventListener('click', function (e) {
   signupModal.style.display = 'block'
+  loginModal.style.display = 'none'
 })
-// Click out of Modal
+
+// Click out of Modals
 window.onclick = function (event) {
-  if (event.target === signupModal) {
+  if (event.target === loginModal) {
     loginModal.style.display = 'none'
+  } else if (event.target === signupModal) {
+    signupModal.style.display = 'none'
   }
 }
 
@@ -72,13 +80,16 @@ signupUsernameInput.addEventListener('keyup', function (e) {
   }
 })
 
-// Prevent submit where passwords don't match //
+// Prevent submit where passwords don't match & password not strong enough
 
 confirmPass.addEventListener('keyup', function (e) {
   var firstPW = signupPass.value
   var secondPW = confirmPass.value
   if (firstPW !== secondPW) {
     errorDiv.textContent = 'Your passwords do not match'
+    signupBtn.disabled = true
+  } else if (!testPasswordValid(signupPass)) {
+    errorDiv.textContent = 'Your password is not strong enough'
     signupBtn.disabled = true
   } else {
     errorDiv.textContent = null
@@ -94,44 +105,38 @@ signupPass.addEventListener('blur', function (e) {
   document.getElementById('message').style.display = 'none'
 })
 
-// Turn rules green when they are fulfilled //
-// Validate lowecase letters
+// Turn rules green when they are fulfilled & enable submit
+function testInputValid (regex, warningText) {
+  if (signupPass.value.match(regex)) {
+    warningText.classList.remove('invalid')
+    warningText.classList.add('valid')
+    // enable submit button
+    signupBtn.disabled = false
+  } else {
+    warningText.classList.remove('valid')
+    warningText.classList.add('invalid')
+    // disable submit button
+    signupBtn.disabled = true
+  }
+}
+
+function testPasswordValid (pw) {
+  if (/[a-z]/.test(pw) && /[A-Z]/.test(pw) && /[0-9]/.test(pw) && /^.{8,}/.test(pw)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// Validate Input
 signupPass.addEventListener('keyup', function (e) {
   var lowerCaseLetters = /[a-z]/g
-  if (signupPass.value.match(lowerCaseLetters)) {
-    letter.classList.remove('invalid')
-    letter.classList.add('valid')
-  } else {
-    letter.classList.remove('valid')
-    letter.classList.add('invalid')
-  }
-
-  // Validate capital letters
   var upperCaseLetters = /[A-Z]/g
-  if (signupPass.value.match(upperCaseLetters)) {
-    capital.classList.remove('invalid')
-    capital.classList.add('valid')
-  } else {
-    capital.classList.remove('valid')
-    capital.classList.add('invalid')
-  }
-
-  // Validate numbers
   var numbers = /[0-9]/g
-  if (signupPass.value.match(numbers)) {
-    number.classList.remove('invalid')
-    number.classList.add('valid')
-  } else {
-    number.classList.remove('valid')
-    number.classList.add('invalid')
-  }
+  var lengthRegEx = /^.{8,}/
 
-  // Validate length
-  if (signupPass.value.length >= 8) {
-    length.classList.remove('invalid')
-    length.classList.add('valid')
-  } else {
-    length.classList.remove('valid')
-    length.classList.add('invalid')
-  }
+  testInputValid(lowerCaseLetters, letter)
+  testInputValid(upperCaseLetters, capital)
+  testInputValid(numbers, number)
+  testInputValid(lengthRegEx, length)
 })
