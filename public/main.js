@@ -5,7 +5,6 @@ var loginModal = document.getElementById('modal')
 var signupModal = document.getElementById('registration-modal')
 var navLoginBtn = document.getElementById('nav-login-button')
 var navSignupBtn = document.getElementById('nav-signup-button')
-var body = document.querySelector('body')
 
 // Signup form fields
 var signupUsernameInput = document.getElementById('signup-user')
@@ -14,7 +13,7 @@ var confirmPass = document.getElementById('confirm-password')
 var signupBtn = document.getElementById('signup-btn')
 var errorDiv = document.getElementById('contentDiv')
 
-var submit_score_btn = document.querySelector('#submit-score-btn')
+var submitScoreBtn = document.querySelector('#submit-score-btn')
 var result = document.querySelector('.result')
 
 // Create good password hints
@@ -34,7 +33,7 @@ if (document.cookie) {
     navSignupBtn.classList.add('hidden')
   }
 } else {
-  submit_score_btn.disabled = true
+  submitScoreBtn.disabled = true
   var warning = document.createElement('p')
   warning.classList.add('mistake')
   warning.textContent = 'You will need to Sign up or Log in to submit any scores'
